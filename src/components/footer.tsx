@@ -29,7 +29,7 @@ export default function Footer() {
         </NavLink>
       ))}
       <NavLink asChild>
-        <Link href="/book-demo">{m.nav.tryPlatform}</Link>
+        <Link href="/try-the-plateform">{m.nav.tryPlatform}</Link>
       </NavLink>
     </SfFooter>
   );

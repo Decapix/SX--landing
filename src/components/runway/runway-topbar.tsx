@@ -14,7 +14,7 @@ export function RunwayTopbar() {
             <Link href="/">Home</Link>
           </Button>
           <Button variant="outline" size="sm" asChild>
-            <Link href="/book-demo">Book Demo</Link>
+            <Link href="/try-the-plateform">Book Demo</Link>
           </Button>
         </nav>
       </div>

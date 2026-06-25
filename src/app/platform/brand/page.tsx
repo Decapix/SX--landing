@@ -58,7 +58,7 @@ export default function BrandPage() {
               {t.concept.brandPage.intro.split(".")[0]}.
             </p>
             <LinkButton
-              href="/book-demo"
+              href="/try-the-plateform"
               variant="primary"
               className="!bg-white !text-black hover:!bg-neutral-100 !px-10 !py-4 !text-[12px] !tracking-[0.14em] w-full sm:w-auto justify-center !font-medium"
             >

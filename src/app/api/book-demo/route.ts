@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     }
 
     const backendResponse = await fetch(
-      buildLandingBackendUrl("api/landing-page/book-demo"),
+      buildLandingBackendUrl("api/landing-page/try-the-plateform"),
       {
         method: "POST",
         headers: {

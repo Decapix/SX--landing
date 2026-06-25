@@ -160,7 +160,7 @@ export default function BookDemoPage() {
 
     setStatus("loading")
     try {
-      const res = await fetch("/api/book-demo", {
+      const res = await fetch("/api/try-the-plateform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, language: lang }),
@@ -364,14 +364,14 @@ export default function BookDemoPage() {
       <Header />
 
       <main className="flex-1 pt-14 bg-white">
-        <section className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14" aria-labelledby="book-demo-heading">
+        <section className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14" aria-labelledby="try-the-plateform-heading">
           <div className="grid lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_420px] gap-10 xl:gap-16 items-start">
             <div>
               {/* Eyebrow */}
               <p className="text-[10px] uppercase tracking-[0.22em] text-neutral-400 mb-3 font-medium">
                 {t.bookDemo.intro ?? "Accédez à la plateforme pour la tester avec votre équipe."}
               </p>
-              <h1 id="book-demo-heading" className="font-['BlissTwin'] text-5xl tracking-tight sm:text-7xl leading-[1.02] mb-3">
+              <h1 id="try-the-plateform-heading" className="font-['BlissTwin'] text-5xl tracking-tight sm:text-7xl leading-[1.02] mb-3">
                 {t.bookDemo.title}
               </h1>
               <div className="h-px w-10 bg-neutral-900 mb-5" aria-hidden="true" />

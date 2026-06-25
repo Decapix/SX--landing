@@ -710,7 +710,7 @@ export function CollectionDetailClient({ data }: Props) {
             className="mt-4 w-full"
             onClick={() => {
               setLoanModalOpen(false);
-              router.push("/book-demo");
+              router.push("/try-the-plateform");
             }}
           >
             {t.nav.bookDemo}

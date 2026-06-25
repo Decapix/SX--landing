@@ -70,7 +70,7 @@ export default function AboutPage() {
             <Link href="/contact" className={buttonVariants({ variant: "secondary" })}>
               {home.finalCta.contact}
             </Link>
-            <Link href="/book-demo" className={buttonVariants({})}>
+            <Link href="/try-the-plateform" className={buttonVariants({})}>
               {home.finalCta.tryPlatform}
             </Link>
           </div>

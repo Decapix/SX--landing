@@ -102,7 +102,7 @@ export function LoginModal({ open, onClose, redirectContext = null }: Props) {
 
           {/* Book demo */}
           <Link
-            href="/book-demo"
+            href="/try-the-plateform"
             onClick={onClose}
             className="group flex flex-col gap-4 rounded-xl border border-neutral-200 bg-neutral-50 p-6 transition-all hover:border-black hover:shadow-md"
           >

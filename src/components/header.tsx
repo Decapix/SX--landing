@@ -46,7 +46,7 @@ export default function Header() {
         }
         actions={
           <>
-            <Link href="/book-demo" className={buttonVariants({ size: "sm" })}>
+            <Link href="/try-the-plateform" className={buttonVariants({ size: "sm" })}>
               {m.nav.tryPlatform}
             </Link>
             <button type="button" onClick={() => setLoginOpen(true)} className={linkBtn}>

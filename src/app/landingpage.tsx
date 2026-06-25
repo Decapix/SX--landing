@@ -199,7 +199,7 @@ export function HomePageClient(_props: Props) {
                 <Link href="/contact" className={buttonVariants({ variant: "secondary" })}>
                   {h.finalCta.contact}
                 </Link>
-                <Link href="/book-demo" className={buttonVariants({})}>
+                <Link href="/try-the-plateform" className={buttonVariants({})}>
                   {h.finalCta.tryPlatform}
                 </Link>
               </>

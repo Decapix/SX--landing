@@ -4,7 +4,7 @@
 
 **Goal:** Completely redesign the Inside Runway landing site into a luxury-fashion-meets-SaaS multi-page site (black & white, BlissTwin + Urbanist) while keeping all existing API routes intact.
 
-**Architecture:** Next.js App Router multi-page site. Simple FR/EN language context (no i18n lib). All pages share a minimal Header/Footer. Forms wire to existing `/api/contact` and `/api/book-demo` routes.
+**Architecture:** Next.js App Router multi-page site. Simple FR/EN language context (no i18n lib). All pages share a minimal Header/Footer. Forms wire to existing `/api/contact` and `/api/try-the-plateform` routes.
 
 **Tech Stack:** Next.js 14+, TypeScript, Tailwind CSS, `next/font` (Urbanist), BlissTwin (local font), nodemailer (contact API — already in place).
 
@@ -29,7 +29,7 @@
 - `src/libs/gtab.ts`
 - `src/modules/landing/landing.module.ts`
 - `src/modules/landing/dto/landing.dto.ts`
-- `src/app/book-demo/page.tsx` (will be rebuilt)
+- `src/app/try-the-plateform/page.tsx` (will be rebuilt)
 - `src/dictionaries/en.ts` (will be rebuilt)
 - `src/dictionaries/fr.ts` (will be rebuilt)
 - `src/routes/route.ts`
@@ -52,7 +52,7 @@ rm src/hooks/mergeRefs.ts
 rm src/libs/gtab.ts
 rm src/modules/landing/landing.module.ts
 rm src/modules/landing/dto/landing.dto.ts
-rm src/app/book-demo/page.tsx
+rm src/app/try-the-plateform/page.tsx
 rm src/dictionaries/en.ts
 rm src/dictionaries/fr.ts
 rm src/routes/route.ts
@@ -67,7 +67,7 @@ rmdir src/dictionaries 2>/dev/null
 **Step 2: Verify project still has its API routes**
 ```bash
 ls src/app/api/contact/route.ts
-ls src/app/api/book-demo/route.ts
+ls src/app/api/try-the-plateform/route.ts
 ls src/app/api/health/route.ts
 ```
 Expected: all three files exist.
@@ -345,7 +345,7 @@ export default function Header() {
           <Link href="/concept" className="hover:opacity-50 transition-opacity">{t.nav.concept}</Link>
           <Link href="/about" className="hover:opacity-50 transition-opacity">{t.nav.about}</Link>
           <Link href="/contact" className="hover:opacity-50 transition-opacity">{t.nav.contact}</Link>
-          <Link href="/book-demo" className="bg-black text-white px-4 py-1.5 hover:bg-neutral-800 transition-colors">
+          <Link href="/try-the-plateform" className="bg-black text-white px-4 py-1.5 hover:bg-neutral-800 transition-colors">
             {t.nav.bookDemo}
           </Link>
           <button onClick={toggle} className="text-xs hover:opacity-50 transition-opacity">
@@ -388,7 +388,7 @@ export default function Footer() {
           <Link href="/concept" className="hover:opacity-50 transition-opacity">{t.nav.concept}</Link>
           <Link href="/about" className="hover:opacity-50 transition-opacity">{t.nav.about}</Link>
           <Link href="/contact" className="hover:opacity-50 transition-opacity">{t.nav.contact}</Link>
-          <Link href="/book-demo" className="hover:opacity-50 transition-opacity">{t.nav.bookDemo}</Link>
+          <Link href="/try-the-plateform" className="hover:opacity-50 transition-opacity">{t.nav.bookDemo}</Link>
         </nav>
         <p className="text-xs text-neutral-500">{t.footer.rights}</p>
       </div>
@@ -478,7 +478,7 @@ export default function Home() {
             {t.home.subline}
           </p>
           <div className="flex gap-4 flex-wrap">
-            <LinkButton href="/book-demo" variant="primary">{t.home.ctaPrimary}</LinkButton>
+            <LinkButton href="/try-the-plateform" variant="primary">{t.home.ctaPrimary}</LinkButton>
             <LinkButton href="/runway" variant="ghost">{t.home.ctaSecondary}</LinkButton>
           </div>
         </section>
@@ -655,7 +655,7 @@ export default function StylistPage() {
           <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl text-neutral-700 mb-12">
             {t.concept.stylistBody}
           </p>
-          <LinkButton href="/book-demo" variant="primary">{t.nav.bookDemo}</LinkButton>
+          <LinkButton href="/try-the-plateform" variant="primary">{t.nav.bookDemo}</LinkButton>
         </div>
       </main>
       <Footer />
@@ -687,7 +687,7 @@ export default function BrandPage() {
           <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl text-neutral-700 mb-12">
             {t.concept.brandBody}
           </p>
-          <LinkButton href="/book-demo" variant="primary">{t.nav.bookDemo}</LinkButton>
+          <LinkButton href="/try-the-plateform" variant="primary">{t.nav.bookDemo}</LinkButton>
         </div>
       </main>
       <Footer />
@@ -797,11 +797,11 @@ git commit -m "feat: contact page — form wired to /api/contact"
 ## Task 12: Book a demo page
 
 **Files:**
-- Create: `src/app/book-demo/page.tsx`
+- Create: `src/app/try-the-plateform/page.tsx`
 
-Book-demo API expects: `userType`, `firstName`, `lastName`, `email`, `phone`, `country`, `socialMedia`, `role`, `language`, `text`, `entityName`, `website`.
+try-the-plateform API expects: `userType`, `firstName`, `lastName`, `email`, `phone`, `country`, `socialMedia`, `role`, `language`, `text`, `entityName`, `website`.
 
-**Step 1: Create `src/app/book-demo/page.tsx`**
+**Step 1: Create `src/app/try-the-plateform/page.tsx`**
 ```tsx
 "use client"
 import { useState } from "react"
@@ -829,7 +829,7 @@ export default function BookDemoPage() {
     e.preventDefault()
     setStatus("loading")
     try {
-      const res = await fetch("/api/book-demo", {
+      const res = await fetch("/api/try-the-plateform", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, language: lang }),
@@ -903,8 +903,8 @@ export default function BookDemoPage() {
 
 **Step 2: Commit**
 ```bash
-git add src/app/book-demo/page.tsx
-git commit -m "feat: book-demo page — form wired to /api/book-demo"
+git add src/app/try-the-plateform/page.tsx
+git commit -m "feat: try-the-plateform page — form wired to /api/try-the-plateform"
 ```
 
 ---
@@ -928,7 +928,7 @@ Manually verify:
 - `/concept` loads — two cards visible
 - `/concept/stylist` and `/concept/brand` load
 - `/contact` loads — form submittable (check network tab for 200/400)
-- `/book-demo` loads — user type toggle works, form submittable
+- `/try-the-plateform` loads — user type toggle works, form submittable
 - Language toggle switches all copy to FR and back
 
 **Step 3: Commit**

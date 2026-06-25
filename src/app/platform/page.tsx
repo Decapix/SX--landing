@@ -59,7 +59,7 @@ export default function PlatformPage() {
           title={p.heroTitle}
           description={p.heroDescription}
           actions={
-            <Link href="/book-demo" className={buttonVariants({})}>
+            <Link href="/try-the-plateform" className={buttonVariants({})}>
               {p.cta}
             </Link>
           }
@@ -96,7 +96,7 @@ export default function PlatformPage() {
           <Card className="flex flex-col items-center text-center">
             <CardTitle>Ready to try it?</CardTitle>
             <CardBody className="mt-2">It's free during the launch phase.</CardBody>
-            <Link href="/book-demo" className={`${buttonVariants({})} mt-6`}>
+            <Link href="/try-the-plateform" className={`${buttonVariants({})} mt-6`}>
               {p.cta}
             </Link>
           </Card>

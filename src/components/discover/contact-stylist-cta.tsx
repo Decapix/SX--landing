@@ -88,7 +88,7 @@ export function ContactStylistCta({
           </div>
           <div className="mt-6 space-y-3">
             <Button asChild className="w-full rounded-full">
-              <Link href="/book-demo" onClick={() => setOpen(false)}>
+              <Link href="/try-the-plateform" onClick={() => setOpen(false)}>
                 {t.nav.bookDemo}
               </Link>
             </Button>

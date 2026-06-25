@@ -1,0 +1,12 @@
+node_modules/
+.next/
+bun.lock
+
+.next_cache_backup_*/
+.next
+.next*
+.env
+.env.local
+.env*.local
+.cap-cache/
+.data/

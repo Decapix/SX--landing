@@ -1,0 +1,7 @@
+{"type":"server-started","port":55400,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55400","screen_dir":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/content","state_dir":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/state"}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/content/glass-canvas.html"}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/content/glass-aqua-v2.html"}
+{"source":"user-event","type":"click","text":"Deep AquaA touch more saturated — glass pops & contrasts more.","choice":"deep-aqua","id":null,"timestamp":1782209145253}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/content/glass-buttons.html"}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/12738-1782208483/content/components-preview.html"}
+{"type":"server-stopped","reason":"idle timeout"}

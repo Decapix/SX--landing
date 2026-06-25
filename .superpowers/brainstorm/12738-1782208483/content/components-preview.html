@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>samples.fashion — sf-ui component preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   sf-ui DESIGN TOKENS  (this layer is what we package & re-theme)
+   ============================================================ */
+:root{
+  /* brand colors */
+  --sf-aqua:        #c6dfdb;   /* primary, soft */
+  --sf-aqua-deep:   #a9cfc9;   /* canvas field */
+  --sf-aqua-dk:     #7fb3ab;
+  --sf-sand:        #c3b392;   /* secondary / CTA */
+  --sf-sand-deep:   #b6a47e;
+  --sf-sand-dk:     #8c7d56;
+  --sf-ink:         #0c0c0d;   /* text */
+  --sf-ink-60:      rgba(12,12,13,.6);
+  --sf-ink-40:      rgba(12,12,13,.4);
+
+  /* glass surfaces */
+  --sf-glass:       rgba(255,255,255,.42);
+  --sf-glass-hi:    rgba(255,255,255,.62);
+  --sf-glass-bd:    rgba(255,255,255,.70);
+  --sf-glass-blur:  16px;
+  --sf-glass-shadow:0 14px 44px -16px rgba(20,40,38,.42);
+  --sf-glass-inner: inset 0 1px 0 rgba(255,255,255,.95);
+
+  /* type */
+  --sf-display: 'Fraunces', Georgia, serif;        /* → Silkon */
+  --sf-body:    'Hanken Grotesk', system-ui, sans-serif; /* → Degular */
+
+  /* shape & motion */
+  --sf-r-sm: 10px; --sf-r-md: 16px; --sf-r-lg: 22px; --sf-r-pill: 999px;
+  --sf-ease: cubic-bezier(.16,1,.3,1);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; font-family:var(--sf-body); color:var(--sf-ink); -webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(55% 55% at 14% 12%, #cfe6e1 0%, transparent 58%),
+    radial-gradient(50% 55% at 92% 14%, #9cc7c0 0%, transparent 55%),
+    radial-gradient(60% 60% at 86% 96%, rgba(195,179,146,.55) 0%, transparent 60%),
+    radial-gradient(48% 50% at 4% 92%, #cfe6e1 0%, transparent 55%),
+    var(--sf-aqua-deep);
+  background-attachment:fixed; min-height:100vh;
+}
+body::before{ content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.05;
+  background-image:radial-gradient(rgba(0,0,0,.6) 1px,transparent 1px); background-size:4px 4px; }
+
+.page{ position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:56px 28px 120px; }
+
+/* glass helper */
+.glass{ backdrop-filter:blur(var(--sf-glass-blur)) saturate(150%); -webkit-backdrop-filter:blur(var(--sf-glass-blur)) saturate(150%);
+  background:var(--sf-glass); border:1px solid var(--sf-glass-bd); box-shadow:var(--sf-glass-shadow), var(--sf-glass-inner); }
+
+/* ---------- doc layout ---------- */
+.docHead{ text-align:center; margin-bottom:8px; }
+.wm{ display:inline-flex; align-items:baseline; gap:1px; line-height:1; }
+.wm .S{ font-family:var(--sf-display); font-size:54px; font-weight:500; }
+.wm .dot{ width:9px;height:9px;border-radius:50%;background:var(--sf-sand);display:inline-block;transform:translateY(-4px);margin:0 2px;}
+.wm .rest{ font-family:var(--sf-body); font-size:20px; letter-spacing:.01em; }
+.docHead p{ color:#16241f; opacity:.7; font-size:14px; max-width:48ch; margin:14px auto 0; line-height:1.55; }
+
+.eyebrow{ display:flex; align-items:center; gap:8px; font-size:10px; text-transform:uppercase; letter-spacing:.24em; color:var(--sf-ink-60); margin:64px 0 18px; }
+.eyebrow::before{ content:""; width:22px; height:1px; background:var(--sf-ink-40); }
+
+.card{ border-radius:var(--sf-r-lg); padding:26px; }
+.grid{ display:grid; gap:18px; }
+.g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:repeat(3,1fr); }
+@media(max-width:820px){ .g2,.g3{ grid-template-columns:1fr; } }
+.label{ font-size:10px; text-transform:uppercase; letter-spacing:.18em; color:var(--sf-ink-60); margin-bottom:12px; }
+
+/* ---------- typography demo ---------- */
+.display-xl{ font-family:var(--sf-display); font-size:64px; line-height:.96; letter-spacing:-.02em; margin:0; }
+.display-l{ font-family:var(--sf-display); font-size:42px; line-height:1; letter-spacing:-.015em; margin:0; }
+.it{ font-style:italic; font-weight:300; }
+.h-serif{ font-family:var(--sf-display); font-size:26px; margin:0; }
+.body{ font-family:var(--sf-body); font-size:15px; line-height:1.6; color:#1c2b29; }
+.small{ font-size:12px; color:var(--sf-ink-60); }
+
+/* ---------- buttons ---------- */
+.btn{ display:inline-flex; align-items:center; gap:8px; font-family:var(--sf-body); font-size:11px; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; padding:13px 24px; border-radius:var(--sf-r-pill);
+  border:1px solid transparent; cursor:pointer; transition:transform .2s var(--sf-ease), box-shadow .2s, background .2s; }
+.btn:hover{ transform:translateY(-2px); }
+.btn-primary{ background:var(--sf-sand); color:var(--sf-ink); box-shadow:0 10px 26px -12px rgba(120,100,60,.8); }
+.btn-primary:hover{ background:var(--sf-sand-deep); }
+.btn-secondary{ background:rgba(195,179,146,.18); border-color:var(--sf-sand-deep); color:#3a3221; }
+.btn-secondary:hover{ background:rgba(195,179,146,.30); }
+.btn-glass{ backdrop-filter:blur(12px); background:var(--sf-glass); border-color:var(--sf-glass-bd); color:var(--sf-ink); box-shadow:var(--sf-glass-inner); }
+.btn-ink{ background:var(--sf-ink); color:#fff; }
+.btn-ghost{ background:transparent; border-color:var(--sf-ink-40); color:var(--sf-ink); }
+.btn-sm{ padding:9px 16px; font-size:10px; }
+.btn:disabled,.btn[aria-disabled]{ opacity:.4; cursor:not-allowed; transform:none; }
+.btnrow{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+/* ---------- pills / badges ---------- */
+.badge{ display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; border-radius:var(--sf-r-pill); }
+.badge-aqua{ background:rgba(127,179,171,.22); color:#225850; }
+.badge-sand{ background:rgba(195,179,146,.28); color:#5a4e30; }
+.badge-ink{ background:var(--sf-ink); color:#fff; }
+.badge-dot::before{ content:""; width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block; }
+
+/* ---------- input ---------- */
+.field{ display:flex; flex-direction:column; gap:7px; }
+.field label{ font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--sf-ink-60); }
+.input{ font-family:var(--sf-body); font-size:14px; color:var(--sf-ink); padding:13px 16px; border-radius:var(--sf-r-md);
+  background:rgba(255,255,255,.55); border:1px solid var(--sf-glass-bd); box-shadow:var(--sf-glass-inner); outline:none; transition:border .2s, box-shadow .2s; }
+.input::placeholder{ color:var(--sf-ink-40); }
+.input:focus{ border-color:var(--sf-sand-deep); box-shadow:0 0 0 3px rgba(195,179,146,.25); }
+
+/* ---------- stat chip ---------- */
+.chip{ border-radius:var(--sf-r-md); padding:16px 18px; }
+.chip .cap{ font-size:9px; text-transform:uppercase; letter-spacing:.18em; color:var(--sf-ink-60); }
+.chip .val{ font-family:var(--sf-display); font-size:30px; margin-top:4px; }
+
+/* ---------- nav ---------- */
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 20px; border-radius:var(--sf-r-pill); }
+.nav .wm .S{ font-size:26px; } .nav .wm .rest{ font-size:12px; } .nav .wm .dot{ width:5px;height:5px;transform:translateY(-2px); }
+.nav .links{ display:flex; gap:20px; font-size:10px; text-transform:uppercase; letter-spacing:.16em; color:var(--sf-ink-60); }
+.nav .links a{ color:inherit; text-decoration:none; }
+
+/* ---------- segmented / tabs ---------- */
+.seg{ display:inline-flex; padding:5px; border-radius:var(--sf-r-pill); gap:4px; }
+.seg button{ font-family:var(--sf-body); font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:9px 18px; border-radius:var(--sf-r-pill); border:none; background:transparent; color:var(--sf-ink-60); cursor:pointer; transition:.2s; }
+.seg button.active{ background:#fff; color:var(--sf-ink); box-shadow:0 4px 12px -4px rgba(0,0,0,.18); }
+
+/* ---------- collection card ---------- */
+.collection{ border-radius:var(--sf-r-md); overflow:hidden; }
+.collection .img{ aspect-ratio:3/4; background:
+  linear-gradient(135deg,#bcd6d1,#c3b392); position:relative; display:flex; align-items:flex-end; padding:14px; }
+.collection .img .brand{ font-size:9px; text-transform:uppercase; letter-spacing:.2em; color:rgba(255,255,255,.9); }
+.collection .meta{ padding:14px 16px; display:flex; justify-content:space-between; align-items:center; }
+.collection .meta .t{ font-family:var(--sf-display); font-size:17px; }
+
+/* ---------- accordion ---------- */
+.acc{ border-radius:var(--sf-r-md); overflow:hidden; }
+.acc details{ border-bottom:1px solid rgba(255,255,255,.5); }
+.acc details:last-child{ border-bottom:none; }
+.acc summary{ list-style:none; cursor:pointer; padding:16px 18px; font-family:var(--sf-display); font-size:16px; display:flex; justify-content:space-between; align-items:center; }
+.acc summary::-webkit-details-marker{ display:none; }
+.acc summary::after{ content:"+"; font-family:var(--sf-body); color:var(--sf-sand-dk); font-size:18px; }
+.acc details[open] summary::after{ content:"–"; }
+.acc .accbody{ padding:0 18px 16px; font-size:13px; color:var(--sf-ink-60); line-height:1.6; }
+
+/* ---------- stepper ---------- */
+.stepper{ display:flex; align-items:flex-start; gap:0; }
+.step{ flex:1; text-align:center; position:relative; }
+.step .dot{ width:26px;height:26px;border-radius:50%;margin:0 auto; display:flex;align-items:center;justify-content:center; border:2px solid var(--sf-ink-40); background:#fff; font-size:11px; }
+.step.done .dot{ border-color:var(--sf-sand-deep); background:var(--sf-sand); }
+.step.active .dot{ border-color:var(--sf-ink); box-shadow:0 0 0 4px rgba(12,12,13,.06); }
+.step .line{ position:absolute; top:13px; left:-50%; width:100%; height:1px; background:var(--sf-ink-40); z-index:-1; }
+.step:first-child .line{ display:none; }
+.step.done .line{ background:var(--sf-sand-deep); }
+.step .lbl{ font-size:10px; letter-spacing:.08em; margin-top:8px; color:var(--sf-ink-60); }
+.step.active .lbl{ color:var(--sf-ink); font-weight:600; }
+
+/* ---------- modal ---------- */
+.modal{ border-radius:var(--sf-r-lg); padding:28px; max-width:420px; }
+.modalShade{ background:rgba(12,12,13,.06); border-radius:var(--sf-r-lg); padding:30px; }
+
+/* ---------- swatches ---------- */
+.swatches{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; }
+.sw{ border-radius:var(--sf-r-md); overflow:hidden; }
+.sw .chipc{ height:74px; } .sw .n{ padding:9px 12px; font-size:11px; background:#fff; }
+.sw .n b{ display:block; } .sw .n span{ color:var(--sf-ink-60); font-size:10px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="docHead">
+    <div class="wm"><span class="S">S</span><span class="dot"></span><span class="rest">samples.fashion</span></div>
+    <p><b>sf-ui</b> — component preview. The liquid-glass design system we'll package into a reusable Node library. Everything below is driven by the token layer at the top of this file.</p>
+  </div>
+
+  <!-- COLOR -->
+  <div class="eyebrow">01 — Color tokens</div>
+  <div class="glass card">
+    <div class="swatches">
+      <div class="sw glass"><div class="chipc" style="background:var(--sf-aqua)"></div><div class="n"><b>Aqua</b><span>#c6dfdb · primary</span></div></div>
+      <div class="sw glass"><div class="chipc" style="background:var(--sf-aqua-deep)"></div><div class="n"><b>Aqua deep</b><span>#a9cfc9 · canvas</span></div></div>
+      <div class="sw glass"><div class="chipc" style="background:var(--sf-sand)"></div><div class="n"><b>Sand</b><span>#c3b392 · CTA</span></div></div>
+      <div class="sw glass"><div class="chipc" style="background:var(--sf-sand-deep)"></div><div class="n"><b>Sand deep</b><span>#b6a47e</span></div></div>
+      <div class="sw glass"><div class="chipc" style="background:var(--sf-ink)"></div><div class="n"><b>Ink</b><span>#0c0c0d · text</span></div></div>
+      <div class="sw glass"><div class="chipc glass" style="background:var(--sf-glass)"></div><div class="n"><b>Glass</b><span>white 42%</span></div></div>
+    </div>
+  </div>
+
+  <!-- TYPE -->
+  <div class="eyebrow">02 — Typography</div>
+  <div class="glass card">
+    <p class="display-xl">Where fashion<br><span class="it">finds its</span> samples.</p>
+    <p class="small" style="margin:10px 0 26px">Display — Silkon <i>(preview: Fraunces)</i></p>
+    <h3 class="h-serif">Section heading in the display serif</h3>
+    <p class="body" style="max-width:60ch;margin-top:10px">Body copy is set in Degular <i>(preview: Hanken Grotesk)</i> — a clean, modern sans that stays legible at small sizes and balances the high-contrast serif. One traceable workspace for every sample loan, from request to return.</p>
+    <p class="small" style="margin-top:14px">Eyebrows &amp; labels — uppercase · letter-spaced · sans</p>
+  </div>
+
+  <!-- BUTTONS -->
+  <div class="eyebrow">03 — Buttons</div>
+  <div class="glass card">
+    <div class="label">Primary actions</div>
+    <div class="btnrow" style="margin-bottom:22px">
+      <button class="btn btn-primary">Book a demo →</button>
+      <button class="btn btn-secondary">Discover</button>
+      <button class="btn btn-glass">Glass action</button>
+      <button class="btn btn-ink">Ink</button>
+      <button class="btn btn-ghost">Ghost</button>
+    </div>
+    <div class="label">Small + states</div>
+    <div class="btnrow">
+      <button class="btn btn-primary btn-sm">Small primary</button>
+      <button class="btn btn-secondary btn-sm">Small secondary</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+    </div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="eyebrow">04 — Badges &amp; pills</div>
+  <div class="glass card">
+    <div class="btnrow">
+      <span class="badge badge-aqua badge-dot">Available</span>
+      <span class="badge badge-sand">New season</span>
+      <span class="badge badge-ink">Press office</span>
+      <span class="badge badge-aqua">SS26</span>
+      <span class="badge badge-sand badge-dot">On loan</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="eyebrow">05 — Navigation bar</div>
+  <div class="glass nav">
+    <div class="wm"><span class="S" style="font-family:var(--sf-display);font-weight:500">S</span><span class="dot"></span><span class="rest">samples.fashion</span></div>
+    <div class="links"><a>Runway</a><a>Discover</a><a>Platform</a><a>About</a></div>
+    <button class="btn btn-primary btn-sm">Book a demo</button>
+  </div>
+
+  <!-- FORM + STATS -->
+  <div class="eyebrow">06 — Form fields &amp; metrics</div>
+  <div class="grid g2">
+    <div class="glass card">
+      <div class="grid" style="gap:16px">
+        <div class="field"><label>Full name</label><input class="input" placeholder="Loïs Canet"></div>
+        <div class="field"><label>Work email</label><input class="input" placeholder="you@brand.com"></div>
+        <button class="btn btn-primary" style="justify-content:center">Request access</button>
+      </div>
+    </div>
+    <div class="grid" style="gap:18px;align-content:start">
+      <div class="glass chip"><div class="cap">On loan now</div><div class="val">128</div></div>
+      <div class="glass chip"><div class="cap">Returned on time</div><div class="val">98.2%</div></div>
+      <div class="glass chip"><div class="cap">Houses onboard</div><div class="val">120+</div></div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="eyebrow">07 — Segmented control / tabs</div>
+  <div class="glass card" style="display:flex;justify-content:center">
+    <div class="seg glass">
+      <button class="active">Collections</button>
+      <button>Stylists</button>
+      <button>Brands</button>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="eyebrow">08 — Cards</div>
+  <div class="grid g3">
+    <div class="glass collection">
+      <div class="img"><span class="brand">Maison Verde</span></div>
+      <div class="meta"><span class="t">Resort 26</span><span class="badge badge-aqua">View</span></div>
+    </div>
+    <div class="glass card">
+      <span class="badge badge-sand">For stylists</span>
+      <h3 class="h-serif" style="margin-top:14px">Borrow with<br>confidence</h3>
+      <p class="body small" style="margin-top:10px">Browse press-room inventory and request loans in a click. Full traceability, end to end.</p>
+      <button class="btn btn-secondary btn-sm" style="margin-top:16px">Learn more →</button>
+    </div>
+    <div class="glass card">
+      <span class="badge badge-aqua">For brands</span>
+      <h3 class="h-serif" style="margin-top:14px">Know where<br>every piece is</h3>
+      <p class="body small" style="margin-top:10px">Real-time press-room inventory. Who has what, and when it returns.</p>
+      <button class="btn btn-secondary btn-sm" style="margin-top:16px">Learn more →</button>
+    </div>
+  </div>
+
+  <!-- STEPPER -->
+  <div class="eyebrow">09 — Sample tracker / stepper</div>
+  <div class="glass card">
+    <div class="stepper">
+      <div class="step done"><div class="line"></div><div class="dot">✓</div><div class="lbl">Request</div></div>
+      <div class="step done"><div class="line"></div><div class="dot">✓</div><div class="lbl">Approved</div></div>
+      <div class="step active"><div class="line"></div><div class="dot"></div><div class="lbl">Shipped</div></div>
+      <div class="step"><div class="line"></div><div class="dot"></div><div class="lbl">Delivered</div></div>
+      <div class="step"><div class="line"></div><div class="dot"></div><div class="lbl">Returned</div></div>
+    </div>
+  </div>
+
+  <!-- ACCORDION + MODAL -->
+  <div class="eyebrow">10 — Accordion &amp; dialog</div>
+  <div class="grid g2">
+    <div class="glass acc">
+      <details open><summary>What is samples.fashion?</summary><div class="accbody">A platform connecting brands, press offices and stylists around sample loans — fully traceable from request to return.</div></details>
+      <details><summary>Who is it for?</summary><div class="accbody">Fashion houses, PR agencies and professional stylists.</div></details>
+      <details><summary>How do I get access?</summary><div class="accbody">Book a demo and our team will onboard your house.</div></details>
+    </div>
+    <div class="modalShade" style="display:flex;align-items:center;justify-content:center">
+      <div class="glass modal">
+        <div class="wm" style="margin-bottom:6px"><span class="S" style="font-family:var(--sf-display);font-size:30px;font-weight:500">S</span><span class="dot"></span><span class="rest" style="font-size:13px">samples.fashion</span></div>
+        <h3 class="h-serif">Welcome back</h3>
+        <p class="body small" style="margin:8px 0 18px">Sign in to your press room.</p>
+        <div class="field" style="margin-bottom:12px"><input class="input" placeholder="Work email"></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="small" style="text-align:center;margin-top:64px;opacity:.6">sf-ui preview · tokens + 10 component families · fonts shown are free stand-ins for Silkon / Degular</p>
+
+</div>
+</body>
+</html>

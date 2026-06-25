@@ -1,0 +1,98 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
+
+.sf{ --aqua:#c6dfdb; --aqua-deep:#a9cfc9; --sand:#c3b392; --ink:#0c0c0d; }
+.sf .serif{ font-family:'Fraunces',serif; font-optical-sizing:auto; }
+.sf .sans{ font-family:'Hanken Grotesk',sans-serif; }
+
+/* ---------- big hero preview ---------- */
+.hero{ position:relative; height:380px; border-radius:22px; overflow:hidden; padding:22px 26px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:
+    radial-gradient(55% 60% at 16% 18%, #d9ece9 0%, transparent 60%),
+    radial-gradient(50% 55% at 88% 22%, #b6d6d0 0%, transparent 55%),
+    radial-gradient(60% 70% at 78% 100%, rgba(195,179,146,.55) 0%, transparent 60%),
+    radial-gradient(45% 50% at 4% 95%, #d9ece9 0%, transparent 55%),
+    var(--aqua); }
+.grain{ position:absolute; inset:0; pointer-events:none; opacity:.04;
+  background-image:radial-gradient(rgba(0,0,0,.6) 1px, transparent 1px); background-size:4px 4px; }
+
+.panel{ backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%);
+  background:rgba(255,255,255,.42); border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 12px 40px -14px rgba(20,40,38,.35), inset 0 1px 0 rgba(255,255,255,.95); border-radius:16px; }
+
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:10px 16px; }
+.wm{ display:flex; align-items:baseline; gap:1px; color:var(--ink); line-height:1; }
+.wm .S{ font-size:26px; font-weight:500; }
+.wm .rest{ font-size:12px; }
+.dot{ width:5px;height:5px;border-radius:50%;background:var(--sand);display:inline-block;transform:translateY(-2px);margin:0 1px;}
+.nav .links{ display:flex; gap:16px; font-size:9px; text-transform:uppercase; letter-spacing:.2em; color:var(--ink); opacity:.75; }
+
+.herobody{ max-width:62%; }
+.h1{ font-family:'Fraunces',serif; color:var(--ink); font-size:46px; line-height:.98; letter-spacing:-.015em; margin:0; }
+.h1 .it{ font-style:italic; font-weight:300; }
+.lead{ font-family:'Hanken Grotesk',sans-serif; color:#1c2b29; opacity:.8; font-size:13px; line-height:1.5; margin:10px 0 0; max-width:30ch; }
+
+.row{ display:flex; gap:10px; align-items:center; }
+.btnFill{ background:var(--ink); color:#fff; font-size:10px; letter-spacing:.16em; text-transform:uppercase; padding:11px 20px; border-radius:999px; font-family:'Hanken Grotesk'; }
+.btnGlass{ padding:11px 20px; border-radius:999px; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); font-family:'Hanken Grotesk'; }
+
+/* floating glass chips */
+.chip{ position:absolute; padding:10px 12px; border-radius:14px; font-family:'Hanken Grotesk'; }
+.chip .cap{ font-size:8px; text-transform:uppercase; letter-spacing:.18em; opacity:.55; color:var(--ink); }
+.chip .val{ font-size:13px; color:var(--ink); }
+.chip1{ top:70px; right:26px; }
+.chip2{ bottom:96px; right:54px; }
+
+/* ---------- intensity options ---------- */
+.opts{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+@media(max-width:760px){ .opts{ grid-template-columns:1fr; } }
+.opt{ border-radius:16px; overflow:hidden; cursor:pointer; border:1px solid rgba(0,0,0,.12); transition:transform .2s, box-shadow .2s; }
+.opt:hover{ transform:translateY(-3px); box-shadow:0 18px 44px -20px rgba(0,0,0,.4); }
+.opt.selected{ outline:3px solid var(--ink); outline-offset:2px; }
+.swatch{ height:120px; position:relative; }
+.soft{ background:radial-gradient(60% 70% at 75% 100%, rgba(195,179,146,.5), transparent 60%), radial-gradient(50% 60% at 15% 10%, #dcedea, transparent 60%), var(--aqua); }
+.deep{ background:radial-gradient(60% 70% at 75% 100%, rgba(195,179,146,.6), transparent 60%), radial-gradient(50% 60% at 15% 10%, #cfe6e1, transparent 60%), var(--aqua-deep); }
+.miniPanel{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:62%; height:46px; }
+.opt .lbl{ padding:12px 14px; font-family:'Hanken Grotesk'; background:#fff; }
+.opt .lbl h3{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:15px; }
+.opt .lbl p{ margin:0; font-size:12px; opacity:.6; }
+</style>
+
+<div class="sf">
+<h2 class="serif">B · Liquid Mesh — aqua canvas</h2>
+<p class="subtitle sans">Aqua <b>#c6dfdb</b> as the field, sand <b>#c3b392</b> glowing in, frosted-glass panels floating on top, black serif headline. This is the look we'd build the library around.</p>
+
+<div class="hero">
+  <div class="grain"></div>
+  <div class="panel nav">
+    <div class="wm serif"><span class="S">S</span><span class="dot"></span><span class="rest sans">samples.fashion</span></div>
+    <div class="links sans">Runway · Discover · Platform · Contact</div>
+  </div>
+
+  <div class="herobody">
+    <h1 class="h1">Where fashion<br><span class="it">finds its</span> samples.</h1>
+    <p class="lead">One traceable workspace for every sample loan — request to return — shared by brands, press offices and stylists.</p>
+  </div>
+
+  <div class="row">
+    <span class="btnFill sans">Book a demo</span>
+    <span class="panel btnGlass sans">Discover the runway</span>
+  </div>
+
+  <div class="panel chip chip1"><div class="cap sans">On loan now</div><div class="val sans">128 pieces</div></div>
+  <div class="panel chip chip2"><div class="cap sans">Returned on time</div><div class="val sans">98.2%</div></div>
+</div>
+
+<p class="subtitle sans" style="margin-top:20px">Dial the aqua intensity — click one:</p>
+<div class="opts" data-multiselect>
+  <div class="opt" data-choice="soft-aqua" onclick="toggleSelect(this)">
+    <div class="swatch soft"><div class="panel miniPanel"></div></div>
+    <div class="lbl"><h3>Soft Aqua</h3><p>Your exact #c6dfdb. Light, calm, breathable.</p></div>
+  </div>
+  <div class="opt" data-choice="deep-aqua" onclick="toggleSelect(this)">
+    <div class="swatch deep"><div class="panel miniPanel"></div></div>
+    <div class="lbl"><h3>Deep Aqua</h3><p>A touch more saturated — glass pops & contrasts more.</p></div>
+  </div>
+</div>
+</div>

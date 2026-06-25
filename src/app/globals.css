@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --font-urbanist: "Urbanist";
+  --font-blisstwin: "BlissTwin";
+  --font-bodoni-moda: "BodoniModa";
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5% 88%;
+  --input: 240 5% 88%;
+  --ring: 240 5.9% 10%;
+  --radius: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  color: rgb(var(--sf-ink));
+  font-family: var(--sf-font-body);
+  background: rgb(var(--sf-aqua-deep));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+ 
+
+@font-face {
+  font-family: "BlissTwin";
+  src: url("/fonts/Blisstwin/Blisstwin.woff2") format("woff2"),
+       url("/fonts/Blisstwin/Blisstwin.otf") format("otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BlissTwin";
+  src: url("/fonts/Blisstwin/Blisstwin.woff2") format("woff2"),
+       url("/fonts/Blisstwin/Blisstwin.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-ExtraLight.ttf") format("ttf");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay-Medium";
+  src: url("/fonts/Playfair/PlayfairDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("/fonts/Bodoni/BodoniModa_18pt-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("/fonts/Bodoni/BodoniModa_9pt-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BodoniModa";
+  src: url("/fonts/Bodoni/BodoniModa-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}

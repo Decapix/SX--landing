@@ -1,0 +1,103 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
+
+.sf{ --aqua-deep:#a9cfc9; --sand:#c3b392; --sand-deep:#b6a47e; --ink:#0c0c0d; }
+.sf .serif{ font-family:'Fraunces',serif; font-optical-sizing:auto; }
+.sf .sans{ font-family:'Hanken Grotesk',sans-serif; }
+
+.stack{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:10px; }
+@media(max-width:900px){ .stack{ grid-template-columns:1fr; } }
+
+.wrap{ border-radius:22px; overflow:hidden; cursor:pointer; border:1px solid rgba(0,0,0,.12); transition:transform .2s, box-shadow .2s; }
+.wrap:hover{ transform:translateY(-4px); box-shadow:0 22px 54px -22px rgba(0,0,0,.45); }
+.wrap.selected{ outline:3px solid var(--ink); outline-offset:3px; }
+
+.hero{ position:relative; height:360px; padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between;
+  background:
+    radial-gradient(55% 60% at 16% 18%, #cfe6e1 0%, transparent 60%),
+    radial-gradient(50% 55% at 90% 20%, #9cc7c0 0%, transparent 55%),
+    radial-gradient(62% 72% at 80% 104%, rgba(195,179,146,.6) 0%, transparent 60%),
+    radial-gradient(45% 50% at 2% 96%, #cfe6e1 0%, transparent 55%),
+    var(--aqua-deep); }
+.grain{ position:absolute; inset:0; pointer-events:none; opacity:.045; background-image:radial-gradient(rgba(0,0,0,.6) 1px,transparent 1px); background-size:4px 4px; }
+
+.panel{ backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%);
+  background:rgba(255,255,255,.40); border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 12px 40px -14px rgba(20,40,38,.4), inset 0 1px 0 rgba(255,255,255,.95); border-radius:16px; }
+
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:9px 15px; }
+.wm{ display:flex; align-items:baseline; gap:1px; color:var(--ink); line-height:1; }
+.wm .S{ font-size:24px; font-weight:500; } .wm .rest{ font-size:11px; }
+.dot{ width:5px;height:5px;border-radius:50%;background:var(--sand);display:inline-block;transform:translateY(-2px);margin:0 1px;}
+.links{ display:flex; gap:13px; font-size:8.5px; text-transform:uppercase; letter-spacing:.2em; color:var(--ink); opacity:.75; }
+
+.h1{ font-family:'Fraunces',serif; color:var(--ink); font-size:40px; line-height:.98; letter-spacing:-.015em; margin:0; }
+.h1 .it{ font-style:italic; font-weight:300; }
+.lead{ font-family:'Hanken Grotesk'; color:#16241f; opacity:.82; font-size:12px; line-height:1.5; margin:9px 0 0; max-width:30ch; }
+
+.row{ display:flex; gap:10px; align-items:center; }
+.btn{ font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; padding:11px 20px; border-radius:999px; font-family:'Hanken Grotesk'; }
+.fillInk{ background:var(--ink); color:#fff; }
+.fillSand{ background:var(--sand); color:var(--ink); box-shadow:0 8px 22px -10px rgba(120,100,60,.7); }
+.glassBtn{ color:var(--ink); }
+.sandOutline{ border:1px solid var(--sand-deep); color:#3a3221; background:rgba(195,179,146,.16); }
+
+.chip{ position:absolute; padding:9px 12px; border-radius:14px; font-family:'Hanken Grotesk'; }
+.chip .cap{ font-size:8px; text-transform:uppercase; letter-spacing:.18em; opacity:.55; color:var(--ink); }
+.chip .val{ font-size:12px; color:var(--ink); }
+
+.tag{ padding:12px 16px; background:#fff; font-family:'Hanken Grotesk'; }
+.tag h3{ margin:0 0 2px; font-family:'Fraunces',serif; font-size:16px; }
+.tag p{ margin:0; font-size:12px; opacity:.6; }
+</style>
+
+<div class="sf">
+<h2 class="serif">Deep aqua — black buttons vs sand buttons</h2>
+<p class="subtitle sans">Everything identical except the CTAs. Click the version you prefer.</p>
+
+<div class="stack" data-multiselect>
+
+  <!-- 1: ink buttons -->
+  <div class="wrap" data-choice="ink-buttons" onclick="toggleSelect(this)">
+    <div class="hero">
+      <div class="grain"></div>
+      <div class="panel nav">
+        <div class="wm serif"><span class="S">S</span><span class="dot"></span><span class="rest sans">samples.fashion</span></div>
+        <div class="links sans">Runway · Discover · Platform</div>
+      </div>
+      <div>
+        <h1 class="h1">Where fashion<br><span class="it">finds its</span> samples.</h1>
+        <p class="lead">One traceable workspace for every sample loan — request to return.</p>
+      </div>
+      <div class="row">
+        <span class="btn fillInk sans">Book a demo</span>
+        <span class="btn panel glassBtn sans">Discover</span>
+      </div>
+      <div class="panel chip" style="top:66px;right:24px"><div class="cap sans">On loan</div><div class="val sans">128 pieces</div></div>
+    </div>
+    <div class="tag"><h3>1 · Black buttons</h3><p>Ink CTA + glass secondary. Maximum contrast, sharp.</p></div>
+  </div>
+
+  <!-- 2: sand buttons -->
+  <div class="wrap" data-choice="sand-buttons" onclick="toggleSelect(this)">
+    <div class="hero">
+      <div class="grain"></div>
+      <div class="panel nav">
+        <div class="wm serif"><span class="S">S</span><span class="dot"></span><span class="rest sans">samples.fashion</span></div>
+        <div class="links sans">Runway · Discover · Platform</div>
+      </div>
+      <div>
+        <h1 class="h1">Where fashion<br><span class="it">finds its</span> samples.</h1>
+        <p class="lead">One traceable workspace for every sample loan — request to return.</p>
+      </div>
+      <div class="row">
+        <span class="btn fillSand sans">Book a demo</span>
+        <span class="btn sandOutline sans">Discover</span>
+      </div>
+      <div class="panel chip" style="top:66px;right:24px"><div class="cap sans">On loan</div><div class="val sans">128 pieces</div></div>
+    </div>
+    <div class="tag"><h3>2 · Sand buttons</h3><p>Sand CTA + sand-tinted secondary. Warmer, softer, more "branded".</p></div>
+  </div>
+
+</div>
+</div>

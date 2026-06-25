@@ -1,0 +1,6 @@
+{"type":"server-started","port":59550,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:59550","screen_dir":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/1102674-1782220462/content","state_dir":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/1102674-1782220462/state"}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/1102674-1782220462/content/icons.html"}
+{"source":"user-event","type":"click","text":"IconoirDelicate thin line, classy.","choice":"iconoir","id":null,"timestamp":1782220732445}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/1102674-1782220462/content/sf-ui-iconoir.html"}
+{"type":"screen-added","file":"/home/solenopsis/Tocuments/wbiz/samples/code/landing/v1/new-landing-ir/.superpowers/brainstorm/1102674-1782220462/content/sf-ui-batch7.html"}
+{"type":"server-stopped","reason":"idle timeout"}

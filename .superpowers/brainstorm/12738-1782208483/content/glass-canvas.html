@@ -1,0 +1,143 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
+
+.sf-scope { --aqua:#c6dfdb; --sand:#c3b392; --ink:#0c0c0d; }
+.sf-scope .serif { font-family:'Fraunces',serif; font-optical-sizing:auto; }
+.sf-scope .sans  { font-family:'Hanken Grotesk',sans-serif; }
+
+.glass-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:8px; }
+@media (max-width:900px){ .glass-cards{ grid-template-columns:1fr; } }
+
+.gcard { border-radius:18px; overflow:hidden; cursor:pointer; border:1px solid rgba(0,0,0,.1);
+         transition:transform .25s ease, box-shadow .25s ease; background:#fff; }
+.gcard:hover{ transform:translateY(-4px); box-shadow:0 24px 60px -24px rgba(0,0,0,.35); }
+.gcard.selected{ outline:3px solid var(--ink); outline-offset:2px; }
+
+/* the live mini-scene */
+.scene{ position:relative; height:300px; padding:18px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
+
+/* --- A: Light Atelier --- */
+.sceneA{ background:
+   radial-gradient(120% 90% at 0% 0%, rgba(198,223,219,.55), transparent 55%),
+   radial-gradient(120% 90% at 100% 100%, rgba(195,179,146,.45), transparent 55%),
+   #fafafa; }
+/* --- B: Liquid Mesh --- */
+.sceneB{ background:
+   radial-gradient(50% 55% at 18% 22%, #c6dfdb 0%, transparent 60%),
+   radial-gradient(55% 60% at 85% 30%, #d8e9e6 0%, transparent 55%),
+   radial-gradient(60% 65% at 70% 95%, #c3b392 0%, transparent 60%),
+   radial-gradient(45% 50% at 12% 90%, #e6dcc6 0%, transparent 55%),
+   #eef3f1; }
+/* --- C: Noir Glass --- */
+.sceneC{ background:
+   radial-gradient(60% 70% at 80% 10%, rgba(198,223,219,.30), transparent 60%),
+   radial-gradient(55% 60% at 10% 100%, rgba(195,179,146,.28), transparent 60%),
+   #0c0c0d; }
+
+/* glass panels */
+.panel{ backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%);
+        border-radius:14px; padding:12px 14px; }
+.panelLight{ background:rgba(255,255,255,.45); border:1px solid rgba(255,255,255,.7);
+        box-shadow:0 8px 30px -10px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.9); }
+.panelDark{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+        box-shadow:0 10px 40px -12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.25); }
+
+.navbar{ display:flex; align-items:center; justify-content:space-between; }
+.wordmark{ display:flex; align-items:baseline; gap:2px; line-height:1; }
+.wordmark .S{ font-size:30px; font-weight:500; }
+.wordmark .rest{ font-size:13px; letter-spacing:.02em; }
+.dot{ display:inline-block; width:5px; height:5px; border-radius:50%; margin:0 1px; transform:translateY(-2px); }
+.navlinks{ display:flex; gap:12px; font-size:9px; text-transform:uppercase; letter-spacing:.18em; }
+
+.headline{ font-size:30px; line-height:1.02; letter-spacing:-.01em; margin:0; }
+.sub{ font-size:11px; line-height:1.4; margin:6px 0 0; opacity:.7; }
+
+.pillrow{ display:flex; gap:8px; align-items:center; }
+.btn{ font-size:9px; text-transform:uppercase; letter-spacing:.16em; padding:8px 14px; border-radius:999px; }
+.btnFill{ background:var(--ink); color:#fff; }
+.btnGhost{ border:1px solid currentColor; }
+
+.inkText{ color:var(--ink); }
+.whiteText{ color:#fff; }
+.muted{ opacity:.6; }
+.cap{ font-size:9px; text-transform:uppercase; letter-spacing:.2em; }
+.gcard .card-body{ padding:14px 16px; }
+.gcard h3{ margin:0 0 4px; }
+.gcard .card-body p{ margin:0; font-size:13px; }
+</style>
+
+<div class="sf-scope">
+<h2 class="serif">samples.fashion — pick a "liquid glass" direction</h2>
+<p class="subtitle sans">Same palette (aqua <b>#c6dfdb</b> · sand <b>#c3b392</b> · black) and serif/sans pairing in all three. What differs is the <b>canvas the glass sits on</b>. Click the one that feels right — or tell me in the terminal.</p>
+
+<div class="glass-cards" data-multiselect>
+
+  <!-- A -->
+  <div class="gcard" data-choice="A-light-atelier" onclick="toggleSelect(this)">
+    <div class="scene sceneA">
+      <div class="navbar inkText">
+        <div class="wordmark serif"><span class="S">S</span><span class="dot" style="background:var(--sand)"></span><span class="rest sans">samples.fashion</span></div>
+        <div class="navlinks sans">Runway · Discover</div>
+      </div>
+      <div>
+        <h3 class="headline serif inkText">Where fashion<br>finds its samples.</h3>
+        <p class="sub sans inkText">A traceable home for every loan.</p>
+      </div>
+      <div class="pillrow">
+        <span class="panel panelLight cap sans inkText">Book a demo</span>
+        <span class="btn btnGhost sans inkText">Discover</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3 class="serif">A · Light Atelier</h3>
+      <p class="sans muted">Near-white, airy. Faint aqua→sand wash, frosted white glass. Clean &amp; editorial — closest to the current light feel.</p>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="gcard" data-choice="B-liquid-mesh" onclick="toggleSelect(this)">
+    <div class="scene sceneB">
+      <div class="navbar inkText">
+        <div class="panel panelLight wordmark serif" style="padding:6px 12px"><span class="S">S</span><span class="dot" style="background:var(--sand)"></span><span class="rest sans">samples.fashion</span></div>
+      </div>
+      <div class="panel panelLight" style="align-self:flex-start">
+        <h3 class="headline serif inkText">Where fashion<br>finds its samples.</h3>
+        <p class="sub sans inkText">A traceable home for every loan.</p>
+      </div>
+      <div class="pillrow">
+        <span class="btn btnFill sans">Book a demo</span>
+        <span class="panel panelLight btn sans inkText" style="border:none">Discover</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3 class="serif">B · Liquid Mesh</h3>
+      <p class="sans muted">Soft aqua + sand gradient mesh. Translucent glass panels float &amp; refract the color behind them. The most "liquid glass" / modern.</p>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="gcard" data-choice="C-noir-glass" onclick="toggleSelect(this)">
+    <div class="scene sceneC">
+      <div class="navbar whiteText">
+        <div class="wordmark serif"><span class="S">S</span><span class="dot" style="background:var(--aqua)"></span><span class="rest sans">samples.fashion</span></div>
+        <div class="navlinks sans muted">Runway · Discover</div>
+      </div>
+      <div>
+        <h3 class="headline serif" style="color:var(--aqua)">Where fashion<br>finds its samples.</h3>
+        <p class="sub sans whiteText">A traceable home for every loan.</p>
+      </div>
+      <div class="pillrow">
+        <span class="panel panelDark cap sans whiteText">Book a demo</span>
+        <span class="btn btnGhost sans whiteText">Discover</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3 class="serif">C · Noir Glass</h3>
+      <p class="sans muted">Deep black canvas, luminous glass panels tinted aqua/sand with bright highlights. Dramatic, premium, high-fashion.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle sans" style="margin-top:18px">Display type shown here is <b>Fraunces</b> (a free stand-in for <b>Silkon</b>); body is <b>Hanken Grotesk</b> (stand-in for <b>Degular</b>). We'll swap in the real fonts once licensing's sorted.</p>
+</div>

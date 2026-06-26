@@ -11,8 +11,8 @@ import {
   Textarea,
   Button,
   Glass,
-  Reveal,
 } from "@decapix/sf-ui";
+import { Reveal } from "@/components/reveal";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useLang } from "@/context/lang-context";

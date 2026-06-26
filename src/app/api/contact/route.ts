@@ -59,6 +59,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, message: 'Message too long' }, { status: 400 })
     }
 
+    // No-backend / static deploy: if SMTP isn't configured, accept the
+    // submission gracefully instead of erroring. Real sending resumes
+    // automatically once the EMAIL_* env vars are set.
+    if (!process.env.EMAIL_SMTP_SERVER || !process.env.EMAIL_USERNAME) {
+      console.warn("[contact] email not configured — accepting without sending")
+      return NextResponse.json({ success: true, skipped: true }, { status: 200 })
+    }
+
     const subject = `Nouveau message de contact - ${firstName} ${lastName}`
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

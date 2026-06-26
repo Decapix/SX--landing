@@ -7,9 +7,9 @@ import {
   Glass,
   Card,
   Eyebrow,
-  Reveal,
   buttonVariants,
 } from "@decapix/sf-ui";
+import { Reveal } from "@/components/reveal";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useMarketing } from "@/content/marketing";
@@ -20,19 +20,11 @@ export default function AboutPage() {
     <Canvas fixed className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative mx-auto max-w-3xl overflow-hidden px-5 pb-10 pt-32 text-center sm:px-8">
-          <img
-            src="/images/art/orbs-wide.svg"
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-10 w-[120%] max-w-none -translate-x-1/2 opacity-50"
-          />
-          <div className="relative z-10">
-            <Eyebrow className="mb-4 justify-center">{a.heroEyebrow}</Eyebrow>
-            <h1 className="font-display text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight tracking-[-0.02em] text-ink">
-              {a.heroTitle}
-            </h1>
-          </div>
+        <section className="mx-auto max-w-3xl px-5 pb-10 pt-32 text-center sm:px-8">
+          <Eyebrow className="mb-4 justify-center">{a.heroEyebrow}</Eyebrow>
+          <h1 className="font-display text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight tracking-[-0.02em] text-ink">
+            {a.heroTitle}
+          </h1>
         </section>
 
         <Reveal className="mx-auto max-w-3xl px-5 pb-12 sm:px-8">

@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   title: "samples.fashion",
   description:
     "The platform where fashion finds its samples — brands, press offices and stylists, together.",
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({

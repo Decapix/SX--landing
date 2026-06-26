@@ -12,9 +12,9 @@ import {
   Eyebrow,
   Badge,
   Stepper,
-  Reveal,
   buttonVariants,
 } from "@decapix/sf-ui";
+import { Reveal } from "@/components/reveal";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useMarketing } from "@/content/marketing";

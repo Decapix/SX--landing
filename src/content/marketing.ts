@@ -147,6 +147,13 @@ const en = {
       success: "Thanks — we'll be in touch.",
     },
   },
+  unavailable: {
+    eyebrow: "Coming soon",
+    title: "The platform isn't available yet.",
+    body: "We're putting the final touches on samples.fashion. It will be available very soon — in the meantime, get in touch and we'll keep you posted.",
+    contact: "Contact us",
+    home: "Back to home",
+  },
 } as const;
 
 type MarketingDict = typeof en;
@@ -293,6 +300,13 @@ const it: MarketingDict = {
       submit: "Invia",
       success: "Grazie — ti contatteremo.",
     },
+  },
+  unavailable: {
+    eyebrow: "Presto disponibile",
+    title: "La piattaforma non è ancora disponibile.",
+    body: "Stiamo mettendo a punto gli ultimi dettagli di samples.fashion. Sarà disponibile molto presto — nel frattempo, contattaci e ti terremo aggiornato.",
+    contact: "Contattaci",
+    home: "Torna alla home",
   },
 };
 
